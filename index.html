@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Вгадай переклад 🇩🇪</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h2>Was bedeutet das Wort <b>"entscheiden"</b>?</h2>
+  <button onclick="checkAnswer(true)">приймати рішення</button>
+  <button onclick="checkAnswer(false)">зупинятися</button>
+  <p id="result"></p>
+
+  <script>
+    function checkAnswer(correct) {
+      const result = document.getElementById('result');
+      if (correct) {
+        result.innerHTML = "✅ Правильно! 'entscheiden' — приймати рішення.";
+      } else {
+        result.innerHTML = "❌ Неправильно. Спробуй ще!";
+      }
+    }
+  </script>
+</body>
+</html>
