@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Вгадай переклад 🇩🇪</title>
+  
+  <!-- 1. ДОДАНО: Скрипт Telegram Game JS -->
+  <script src="https://telegram.org/js/games.js"></script>
+
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; }
-    button { margin: 10px; padding: 10px 20px; font-size: 18px; }
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 18px; cursor: pointer; }
+    #result { font-weight: bold; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -15,10 +20,18 @@
   <p id="result"></p>
 
   <script>
+    let score = 0;
+
     function checkAnswer(correct) {
       const result = document.getElementById('result');
       if (correct) {
+        score += 10;
         result.innerHTML = "✅ Правильно! 'entscheiden' — приймати рішення.";
+        
+        // 2. ДОДАНО: Передача балів у Telegram (якщо гра відкрита через сервер бота)
+        if (typeof TelegramGameProxy !== 'undefined') {
+          TelegramGameProxy.shareScore();
+        }
       } else {
         result.innerHTML = "❌ Неправильно. Спробуй ще!";
       }
